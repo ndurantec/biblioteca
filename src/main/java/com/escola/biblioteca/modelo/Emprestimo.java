@@ -1,12 +1,23 @@
 package com.escola.biblioteca.modelo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Emprestimo {
 
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+  
     private int cgmAluno;
     private String isbnLivro;
     private String dataEmprestimo;
     private String dataEntrega;
-    
+
     public int getCgmAluno() {
 
         return cgmAluno;
