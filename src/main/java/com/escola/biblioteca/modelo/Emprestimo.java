@@ -8,11 +8,9 @@ import jakarta.persistence.Id;
 @Entity
 public class Emprestimo {
 
-    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-  
     private int cgmAluno;
     private String isbnLivro;
     private String dataEmprestimo;
@@ -87,6 +85,4 @@ public class Emprestimo {
     public void setDataEntrega(String dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
-    
-
 }
