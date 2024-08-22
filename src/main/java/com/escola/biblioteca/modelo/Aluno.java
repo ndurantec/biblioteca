@@ -21,7 +21,7 @@ public class Aluno {
     private String dataNascimento;
 
 
-    
+
     public String getDataNascimento() {
         return dataNascimento;
     }
@@ -109,9 +109,5 @@ public class Aluno {
             return false;
         return true;
     }
-    
-
-
-   
-    
+ 
 }
