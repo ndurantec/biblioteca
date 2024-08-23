@@ -1,6 +1,6 @@
-package com.escola.biblioteca.DTO;
+package com.escola.biblioteca.Dto;
 
-public class LivroDTO {
+public class LivroDto {
     private String nome;
     private String genero;
     private int anoPublicacao;
@@ -11,10 +11,10 @@ public class LivroDTO {
 
 
     @Deprecated
-    public LivroDTO() {
+    public LivroDto() {
     }
     
-    public LivroDTO(String nome, String genero, int anoPublicacao, String isbn, int estante, int idadeIndicativa,
+    public LivroDto(String nome, String genero, int anoPublicacao, String isbn, int estante, int idadeIndicativa,
     String autor) {
     this.nome = nome;
     this.genero = genero;

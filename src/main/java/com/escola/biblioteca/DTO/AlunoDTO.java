@@ -1,6 +1,6 @@
-package com.escola.biblioteca.DTO;
+package com.escola.biblioteca.Dto;
 
-public class AlunoDTO {
+public class AlunoDto {
     private  String nome;
     private String endereco;
     private String email;
@@ -9,11 +9,11 @@ public class AlunoDTO {
     private String dataNascimento;
 
     @Deprecated      
-    public AlunoDTO() {
+    public AlunoDto() {
     }
    
 
-    public AlunoDTO(String nome, String endereco, String email, int cgm, String telefone, String dataNascimento) {
+    public AlunoDto(String nome, String endereco, String email, int cgm, String telefone, String dataNascimento) {
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
