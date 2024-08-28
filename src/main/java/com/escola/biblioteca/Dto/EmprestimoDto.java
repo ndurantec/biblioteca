@@ -1,5 +1,7 @@
 package com.escola.biblioteca.Dto;
 
+import com.escola.biblioteca.modelo.Emprestimo;
+
 public class EmprestimoDto {
 
     private int cgmAluno;
@@ -38,5 +40,9 @@ public class EmprestimoDto {
 
     public void setDataEntrega(String dataEntrega) {
         this.dataEntrega = dataEntrega;
+    }
+
+    public Emprestimo novoemEmprestimo() {
+        return new Emprestimo(:null, this.nome);
     }
 }
