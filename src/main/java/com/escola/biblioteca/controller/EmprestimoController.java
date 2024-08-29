@@ -4,9 +4,9 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.session.Servlet;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,20 +42,24 @@ public class EmprestimoController {
     }
 
     @PostMapping(value = "/insert")
-    public ResponseEntity<Emprestimo> insert(@RequestBody EmprestimoDto EmprestimoDto) {
+    public ResponseEntity<Emprestimo> insert(@RequestBody EmprestimoDto emprestimoDto) {
 
-        EmprestimoDto.novoemEmprestimo();
-        EmprestimoRepository.save(emprestimo);
+        Emprestimo emprestimo = emprestimoDto.novoemEmprestimo();
 
-      URI uri  ServletUriComponentsBuilder.fromCurrentRequest()
-                        .path("/{id}")
-                        .buildAndExpand(Emprestimo.getId())
-                        .to
+        emprestimoRepository.save(emprestimo);
 
+      URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                    .buildAndExpand(emprestimo.getId())
+                        .toUri();
 
-
-        return ResponseEntity.created(uri).body(Emprestimo)
-
+        return ResponseEntity.created(uri).body(emprestimo);
     }
-    
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Emprestimo> findyById(@PathVariable Long id) {
+        return emprestimoRepository.findById(id)
+            .map(registro -> ResponseEntity.ok ().body(registro))
+                    .orElse(ResponseEntity.notFound().build());
+    }
 }

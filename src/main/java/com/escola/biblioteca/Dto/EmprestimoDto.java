@@ -43,6 +43,6 @@ public class EmprestimoDto {
     }
 
     public Emprestimo novoemEmprestimo() {
-        return new Emprestimo(:null, this.nome);
+        return new Emprestimo(null, cgmAluno, isbnLivro, dataEmprestimo, dataEntrega);
     }
 }
