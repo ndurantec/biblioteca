@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,4 +63,32 @@ public class EmprestimoController {
             .map(registro -> ResponseEntity.ok ().body(registro))
                     .orElse(ResponseEntity.notFound().build());
     }
+
+
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Emprestimo> update (@PathVariable Long id, @RequestBody EmprestimoDto emprestimoDto) {
+
+        
+
+       return emprestimoRepository.findById(id)
+       .map(existingEmprestimo -> {
+           Emprestimo emprestimo = emprestimoDto.novoemEmprestimo();
+           emprestimo.setId(id);
+           emprestimoRepository.save(emprestimo);
+           return ResponseEntity.ok(emprestimo);
+       })
+       .orElse(ResponseEntity.notFound().build()); 
+
+    }
+
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        emprestimoRepository.deleteById(id);
+            
+        return ResponseEntity.noContent().build();
+       
+    
+    }
+
+
 }
