@@ -1,5 +1,7 @@
 package com.escola.biblioteca.Dto;
 
+import com.escola.biblioteca.modelo.Aluno;
+
 public class AlunoDto {
     private  String nome;
     private String endereco;
@@ -12,7 +14,6 @@ public class AlunoDto {
     public AlunoDto() {
     }
    
-
     public AlunoDto(String nome, String endereco, String email, int cgm, String telefone, String dataNascimento) {
         this.nome = nome;
         this.endereco = endereco;
@@ -22,21 +23,17 @@ public class AlunoDto {
         this.dataNascimento = dataNascimento;
     }
 
-
     public String getNome() {
         return nome;
     }
-
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-
     public String getEndereco() {
         return endereco;
     }
-
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
@@ -82,4 +79,7 @@ public class AlunoDto {
         this.dataNascimento = dataNascimento;
     }
 
+    public Aluno novoAluno(){
+         return new Aluno(null, nome, endereco, email, cgm, telefone, dataNascimento);
+    }
 }
