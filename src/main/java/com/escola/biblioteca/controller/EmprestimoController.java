@@ -2,6 +2,7 @@ package com.escola.biblioteca.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -64,30 +65,24 @@ public class EmprestimoController {
                     .orElse(ResponseEntity.notFound().build());
     }
 
-
-
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Emprestimo> update (@PathVariable Long id, @RequestBody EmprestimoDto emprestimoDto) {
-
-        
-
-       return emprestimoRepository.findById(id)
-       .map(existingEmprestimo -> {
-           Emprestimo emprestimo = emprestimoDto.novoemEmprestimo();
-           emprestimo.setId(id);
-           emprestimoRepository.save(emprestimo);
-           return ResponseEntity.ok(emprestimo);
-       })
-       .orElse(ResponseEntity.notFound().build()); 
-
-    }
-
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         emprestimoRepository.deleteById(id);
             
         return ResponseEntity.noContent().build();
-       
-    
+    }
+
+    @PutMapping (value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable long id , @RequestBody Emprestimo emprestimo ) {
+
+        Optional<Emprestimo> emprestimoBanco = emprestimoRepository.findById(id);
+
+        Emprestimo emprestimoModificado = emprestimoBanco.get();
+
+        emprestimoModificado.setDataEmprestimo(emprestimo.getDataEmprestimo());
+
+        emprestimoRepository.save(emprestimoModificado);
+
+        return ResponseEntity.noContent().build();
     }
 
 
