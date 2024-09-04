@@ -2,12 +2,14 @@ package com.escola.biblioteca.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,5 +63,21 @@ public class LivroController {
         return livroRepository.findById(id)
             .map(registro -> ResponseEntity.ok ().body(registro))
                     .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody Livro livro) {
+
+       Optional<Livro> livroBanco = livroRepository.findById(null);
+
+       Livro livroModificado = livroBanco.get();
+
+       livroModificado.setNome(livro.getNome());
+
+       livroRepository.save(livroModificado);
+
+       return ResponseEntity.noContent().build();
+
+
     }
 }
