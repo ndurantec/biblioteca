@@ -1,13 +1,16 @@
 package com.escola.biblioteca.controller;
 
+import java.lang.StackWalker.Option;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,6 +64,23 @@ import com.escola.biblioteca.repository.AlunoRepository;
         return alunoRepository.findById(id)
         .map(registro-> ResponseEntity.ok().body(registro))
                  .orElse(ResponseEntity.notFound().build());
+
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody Aluno aluno){
+        
+        Optional<Aluno> alunoBanco = alunoRepository.findById(null);
+
+        Aluno alunoModificado = alunoBanco.get();
+
+        alunoModificado.setNome(aluno.getNome());
+
+        alunoRepository.save(alunoModificado);
+
+        return ResponseEntity.noContent().build();
+
+
 
     }
 }
