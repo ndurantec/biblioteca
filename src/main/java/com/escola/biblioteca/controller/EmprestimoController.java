@@ -48,7 +48,6 @@ public class EmprestimoController {
     public ResponseEntity<Emprestimo> insert(@RequestBody EmprestimoDto emprestimoDto) {
 
         Emprestimo emprestimo = emprestimoDto.novoemEmprestimo();
-
         emprestimoRepository.save(emprestimo);
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
@@ -66,26 +65,25 @@ public class EmprestimoController {
                     .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping (value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        emprestimoRepository.deleteById(id);
-            
-        return ResponseEntity.noContent().build();
-    }
-
     @PutMapping (value = "/{id}")
     public ResponseEntity<Void> update(@PathVariable long id , @RequestBody Emprestimo emprestimo ) {
 
         Optional<Emprestimo> emprestimoBanco = emprestimoRepository.findById(id);
 
         Emprestimo emprestimoModificado = emprestimoBanco.get();
-
         emprestimoModificado.setDataEmprestimo(emprestimo.getDataEmprestimo());
-
+        emprestimoModificado.setIsbnLivro(emprestimo.getIsbnLivro());
+        emprestimoModificado.setCgmAluno(emprestimo.getCgmAluno());
+        emprestimoModificado.setDataEntrega(emprestimo.getDataEntrega());
         emprestimoRepository.save(emprestimoModificado);
 
         return ResponseEntity.noContent().build();
     }
 
-
+    @DeleteMapping (value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        emprestimoRepository.deleteById(id);
+            
+        return ResponseEntity.noContent().build();
+    }
 }
