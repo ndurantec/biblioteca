@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,13 +72,21 @@ public class LivroController {
        Optional<Livro> livroBanco = livroRepository.findById(null);
 
        Livro livroModificado = livroBanco.get();
-
        livroModificado.setNome(livro.getNome());
-
+       livroModificado.setGenero(livro.getGenero());
+       livroModificado.setAnoPublicacao(livro.getAnoPublicacao());
+       livroModificado.setIsbn(livro.getIsbn());
        livroRepository.save(livroModificado);
 
        return ResponseEntity.noContent().build();
 
+    }
+
+       @DeleteMapping (value = "/{id}")
+       public ResponseEntity<Void> delete(@PathVariable Long id) {
+           livroRepository.deleteById(id);
+               
+           return ResponseEntity.noContent().build();
+       }
 
     }
-}
