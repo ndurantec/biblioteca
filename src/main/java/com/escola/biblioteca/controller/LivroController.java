@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.escola.biblioteca.modelo.Livro;
 import com.escola.biblioteca.repository.LivroRepository;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value = "/livro")
 public class LivroController {
 
@@ -76,6 +78,9 @@ public class LivroController {
        livroModificado.setGenero(livro.getGenero());
        livroModificado.setAnoPublicacao(livro.getAnoPublicacao());
        livroModificado.setIsbn(livro.getIsbn());
+       livroModificado.setEstante(livro.getEstante());
+       livroModificado.setIdadeIndicativa(livro.getIdadeIndicativa());
+       livroModificado.setAutor(livro.getAutor());
        livroRepository.save(livroModificado);
 
        return ResponseEntity.noContent().build();
