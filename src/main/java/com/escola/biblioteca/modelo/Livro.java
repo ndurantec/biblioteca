@@ -12,13 +12,13 @@ public class Livro {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    String nome;
-    String genero;
-    int anoPublicacao;
-    String isbn;
-    int estante;
-    int idadeIndicativa;
-    String autor;
+    private String nome;
+    private String genero;
+    private int anoPublicacao;
+    private String isbn;
+    private int estante;
+    private int idadeIndicativa;
+    private String autor;
      
     public Livro(Object object, String nome2) {
         

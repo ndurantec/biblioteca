@@ -1,8 +1,8 @@
-package com.escola.biblioteca.Dto;
+package com.escola.biblioteca.DTO;
 
 import com.escola.biblioteca.modelo.Livro;
 
-public class LivroDto {
+public class LivroDTO {
 
     private String nome;
     private String genero;
@@ -13,7 +13,7 @@ public class LivroDto {
     private String autor;
 
     @Deprecated
-    public LivroDto() {
+    public LivroDTO() {
     }
 
     public String getNome() {

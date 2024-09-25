@@ -1,15 +1,17 @@
 package com.escola.biblioteca.modelo;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Emprestimo {
+public class Emprestimo implements Serializable{
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int cgmAluno;
     private String isbnLivro;
@@ -67,7 +69,7 @@ public class Emprestimo {
     public void setDataEntrega(String dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
-
+ /*
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -119,4 +121,54 @@ public class Emprestimo {
         return "Emprestimo [id=" + id + ", cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo="
                 + dataEmprestimo + ", dataEntrega=" + dataEntrega + "]";
     }
+
+    */
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + cgmAluno;
+        result = prime * result + ((isbnLivro == null) ? 0 : isbnLivro.hashCode());
+        result = prime * result + ((dataEmprestimo == null) ? 0 : dataEmprestimo.hashCode());
+        result = prime * result + ((dataEntrega == null) ? 0 : dataEntrega.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Emprestimo other = (Emprestimo) obj;
+        if (cgmAluno != other.cgmAluno)
+            return false;
+        if (isbnLivro == null) {
+            if (other.isbnLivro != null)
+                return false;
+        } else if (!isbnLivro.equals(other.isbnLivro))
+            return false;
+        if (dataEmprestimo == null) {
+            if (other.dataEmprestimo != null)
+                return false;
+        } else if (!dataEmprestimo.equals(other.dataEmprestimo))
+            return false;
+        if (dataEntrega == null) {
+            if (other.dataEntrega != null)
+                return false;
+        } else if (!dataEntrega.equals(other.dataEntrega))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Emprestimo [cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo=" + dataEmprestimo
+                + ", dataEntrega=" + dataEntrega + "]";
+    }
+
+    
 }

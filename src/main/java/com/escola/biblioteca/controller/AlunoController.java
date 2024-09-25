@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.escola.biblioteca.Dto.AlunoDto;
+import com.escola.biblioteca.DTO.AlunoDTO;
 import com.escola.biblioteca.modelo.Aluno;
 import com.escola.biblioteca.repository.AlunoRepository;
 
@@ -47,7 +47,7 @@ import com.escola.biblioteca.repository.AlunoRepository;
     }
     
     @PostMapping(value = "/insert")
-    public ResponseEntity<Aluno>insert(@RequestBody AlunoDto alunoDto){
+    public ResponseEntity<Aluno>insert(@RequestBody AlunoDTO alunoDto){
         
         Aluno  aluno = alunoDto.novoAluno();
         

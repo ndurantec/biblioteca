@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.escola.biblioteca.Dto.EmprestimoDto;
+import com.escola.biblioteca.DTO.EmprestimoDTO;
 import com.escola.biblioteca.modelo.Emprestimo;
 import com.escola.biblioteca.repository.EmprestimoRepository;
 
@@ -47,9 +47,9 @@ public class EmprestimoController {
     }
 
     @PostMapping(value = "/insert")
-    public ResponseEntity<Emprestimo> insert(@RequestBody EmprestimoDto emprestimoDto) {
+    public ResponseEntity<Emprestimo> insert(@RequestBody EmprestimoDTO emprestimoDto) {
 
-        Emprestimo emprestimo = emprestimoDto.novoemEmprestimo();
+        Emprestimo emprestimo = emprestimoDto.novoEmprestimo();
         emprestimoRepository.save(emprestimo);
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()

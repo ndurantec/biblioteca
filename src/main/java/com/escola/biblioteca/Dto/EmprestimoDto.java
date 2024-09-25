@@ -1,10 +1,9 @@
-package com.escola.biblioteca.Dto;
+package com.escola.biblioteca.DTO;
 
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.escola.biblioteca.modelo.Emprestimo;
 
-public class EmprestimoDto {
+public class EmprestimoDTO {
 
     private int cgmAluno;
     private String isbnLivro;
@@ -44,7 +43,7 @@ public class EmprestimoDto {
         this.dataEntrega = dataEntrega;
     }
 
-    public Emprestimo novoemEmprestimo() {
+    public Emprestimo novoEmprestimo() {
         return new Emprestimo(null, cgmAluno, isbnLivro, dataEmprestimo, dataEntrega);
     }
 
