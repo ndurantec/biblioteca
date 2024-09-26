@@ -5,12 +5,30 @@ import com.escola.biblioteca.modelo.Emprestimo;
 
 public class EmprestimoDTO {
 
+    private Long id;
     private int cgmAluno;
     private String isbnLivro;
     private String dataEmprestimo;
     private String dataEntrega;
 
-    @Deprecated
+    public EmprestimoDTO() {
+    }
+
+    public EmprestimoDTO(int cgmAluno, String isbnLivro, String dataEmprestimo, String dataEntrega) {
+        this.cgmAluno = cgmAluno;
+        this.isbnLivro = isbnLivro;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataEntrega = dataEntrega;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int getCgmAluno() {
         return cgmAluno;
     }
@@ -43,8 +61,24 @@ public class EmprestimoDTO {
         this.dataEntrega = dataEntrega;
     }
 
-    public Emprestimo novoEmprestimo() {
-        return new Emprestimo(null, cgmAluno, isbnLivro, dataEmprestimo, dataEntrega);
+    public Emprestimo novoEmprestimo(){
+        System.out.println("**********************************");
+        System.out.println("**********************************");
+        System.out.println("**********************************");
+        System.out.println(this.cgmAluno);
+        System.out.println(this.isbnLivro);
+        System.out.println(this.dataEmprestimo);
+        System.out.println(this.dataEntrega);
+        
+        return new Emprestimo(cgmAluno, isbnLivro, dataEmprestimo, dataEntrega);
     }
+
+    @Override
+    public String toString() {
+        return "EmprestimoDTO [id=" + id + ", cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo="
+                + dataEmprestimo + ", dataEntrega=" + dataEntrega + "]";
+    }
+
+    
 
 }

@@ -30,6 +30,15 @@ public class Emprestimo implements Serializable{
         this.dataEntrega = dataEntrega;
     }
 
+    
+
+    public Emprestimo(int cgmAluno, String isbnLivro, String dataEmprestimo, String dataEntrega) {
+        this.cgmAluno = cgmAluno;
+        this.isbnLivro = isbnLivro;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataEntrega = dataEntrega;
+    }
+
     public Long getId() {
         return id;
     }
