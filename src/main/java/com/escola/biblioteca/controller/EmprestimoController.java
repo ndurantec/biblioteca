@@ -27,6 +27,9 @@ import com.escola.biblioteca.repository.EmprestimoRepository;
 public class EmprestimoController {
 
     @Autowired
+    private EmailService emailService;
+
+    @Autowired
     private EmprestimoRepository emprestimoRepository;
 
     @GetMapping(value = "/imprimir")
@@ -51,6 +54,9 @@ public class EmprestimoController {
 
         Emprestimo emprestimo = emprestimoDto.novoEmprestimo();
         emprestimoRepository.save(emprestimo);
+
+        
+
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
