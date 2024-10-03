@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escola.biblioteca.DTO.EmprestimoDTO;
 import com.escola.biblioteca.modelo.Emprestimo;
+import com.escola.biblioteca.modelo.EmailDetails;
 import com.escola.biblioteca.repository.EmprestimoRepository;
 
 @RestController
@@ -55,7 +56,7 @@ public class EmprestimoController {
         Emprestimo emprestimo = emprestimoDto.novoEmprestimo();
         emprestimoRepository.save(emprestimo);
 
-        
+        //EmailDetails emailDetails = new EmailDetails(emprestimoDto., null, null, null);
 
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()

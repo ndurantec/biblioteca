@@ -96,6 +96,14 @@ import com.escola.biblioteca.repository.AlunoRepository;
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping(value = "/{cgm}")
+    public void findByCgm(@PathVariable Long cgm){
+        //return alunoRepository.findByCgm(cgm);
+        //.map(registro-> ResponseEntity.ok().body(registro))
+                 //.orElse(ResponseEntity.notFound().build());
+
+    }
+
 }
 
 
