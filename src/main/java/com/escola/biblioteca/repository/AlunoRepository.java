@@ -7,9 +7,10 @@ import com.escola.biblioteca.modelo.Aluno;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long>{
 
+
     //@Transactional(readOnly = true)  
-    @Query(value = "select u.id from conta u where u.conta = ?1", nativeQuery = true)
-    Long findByCgm(Long cgm);
+    @Query(value = "select * from aluno u where u.cgm = ?1", nativeQuery = true)
+    Aluno findByCgm(Long cgm);
 
 }
 
