@@ -27,8 +27,8 @@ import com.escola.biblioteca.repository.EmprestimoRepository;
 @RequestMapping(value = "/emprestimo")
 public class EmprestimoController {
 
-    @Autowired
-    private EmailService emailService;
+    // @Autowired
+    // private EmailService emailService;
 
     @Autowired
     private EmprestimoRepository emprestimoRepository;
