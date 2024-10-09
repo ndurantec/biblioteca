@@ -104,11 +104,6 @@ import com.escola.biblioteca.repository.AlunoRepository;
 
     }
 
-    public Aluno findyByCgm(@PathVariable Long Cgm) {
-        return alunoRepository.findByCgm(Cgm);
-           
-    }
-
 }
 
 
