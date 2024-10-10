@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escola.biblioteca.DTO.EmprestimoDTO;
+import com.escola.biblioteca.modelo.Aluno;
 import com.escola.biblioteca.modelo.Emprestimo;
-import com.escola.biblioteca.modelo.EmailDetails;
+import com.escola.biblioteca.repository.AlunoRepository;
 import com.escola.biblioteca.repository.EmprestimoRepository;
 
 @RestController
@@ -27,11 +28,14 @@ import com.escola.biblioteca.repository.EmprestimoRepository;
 @RequestMapping(value = "/emprestimo")
 public class EmprestimoController {
 
-    // @Autowired
-    // private EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private EmprestimoRepository emprestimoRepository;
+
+    @Autowired
+    private AlunoRepository alunoRepository;
 
     @GetMapping(value = "/imprimir")
     public String imprimir(){
@@ -55,6 +59,22 @@ public class EmprestimoController {
 
         Emprestimo emprestimo = emprestimoDto.novoEmprestimo();
         emprestimoRepository.save(emprestimo);
+
+
+
+        Aluno alunoDoBanco = alunoRepository.findByCgm(emprestimoDto.getCgmAluno() );
+
+        if (alunoDoBanco != null) {
+            System.out.println("================================================");
+            System.out.println("================================================");
+            System.out.println("================================================");
+            System.out.println("O email do aluno --> " + alunoDoBanco.getEmail());
+            System.out.println("================================================");
+            System.out.println("================================================");
+            System.out.println("================================================");
+        } 
+
+
 
         //EmailDetails emailDetails = new EmailDetails(emprestimoDto., null, null, null);
 
@@ -96,7 +116,10 @@ public class EmprestimoController {
         return ResponseEntity.noContent().build();
     }
 
-    
+    private Aluno findyByCgm(int Cgm) {
+        return alunoRepository.findByCgm(Cgm);
+           
+    }
     
     
 }

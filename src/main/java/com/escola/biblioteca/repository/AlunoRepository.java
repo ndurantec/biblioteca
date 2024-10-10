@@ -10,7 +10,7 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long>{
 
     //@Transactional(readOnly = true)  
     @Query(value = "select * from aluno u where u.cgm = ?1", nativeQuery = true)
-    Aluno findByCgm(Long cgm);
+    Aluno findByCgm(int cgm);
 
 }
 
