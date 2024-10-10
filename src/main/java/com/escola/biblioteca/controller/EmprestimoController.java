@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escola.biblioteca.DTO.EmprestimoDTO;
 import com.escola.biblioteca.modelo.Aluno;
+import com.escola.biblioteca.modelo.EmailDetails;
 import com.escola.biblioteca.modelo.Emprestimo;
 import com.escola.biblioteca.repository.AlunoRepository;
 import com.escola.biblioteca.repository.EmprestimoRepository;
@@ -76,8 +77,8 @@ public class EmprestimoController {
 
 
 
-        //EmailDetails emailDetails = new EmailDetails(emprestimoDto., null, null, null);
-
+        // EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro", null);
+        // emailService.sendMail(emailDetails);
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
