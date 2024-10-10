@@ -60,15 +60,20 @@ public class EmprestimoController {
         Emprestimo emprestimo = emprestimoDto.novoEmprestimo();
         emprestimoRepository.save(emprestimo);
 
+
+
         Aluno alunoDoBanco = alunoRepository.findByCgm(emprestimoDto.getCgmAluno() );
 
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("O email do aluno --> " + alunoDoBanco.getEmail());
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("================================================");
+        if (alunoDoBanco != null) {
+            System.out.println("================================================");
+            System.out.println("================================================");
+            System.out.println("================================================");
+            System.out.println("O email do aluno --> " + alunoDoBanco.getEmail());
+            System.out.println("================================================");
+            System.out.println("================================================");
+            System.out.println("================================================");
+        } 
+
 
 
         //EmailDetails emailDetails = new EmailDetails(emprestimoDto., null, null, null);
