@@ -94,4 +94,13 @@ public class LivroController {
            return ResponseEntity.noContent().build();
        }
 
+       // @PostMapping("/findByIsbn")
+       // public ResponseEntity<Long> buscarIsbn(@RequestBody LivroDTO livroDTO) {
+           // Optional<Livro> livro = livroRepository.findByIsbn(livroDTO.getIsbn());
+            //Livro livroObjeto = livro.get();
+          //  System.out.println(livroObjeto.toString());
+           // return livro.map(c -> ResponseEntity.ok(c.getId()))
+                //        .orElse(ResponseEntity.notFound().build());
+       // }
+
     }

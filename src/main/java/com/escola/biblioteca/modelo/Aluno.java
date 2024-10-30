@@ -1,5 +1,7 @@
 package com.escola.biblioteca.modelo;
 
+import java.util.Optional;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -151,4 +153,6 @@ public class Aluno {
         return "Aluno [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", email=" + email + ", cgm=" + cgm
                 + ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + "]";
     }
+
+ 
 }

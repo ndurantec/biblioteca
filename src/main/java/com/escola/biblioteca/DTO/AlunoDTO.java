@@ -3,7 +3,7 @@ package com.escola.biblioteca.DTO;
 import com.escola.biblioteca.modelo.Aluno;
 
 public class AlunoDTO {
-    private  String nome;
+    private String nome;
     private String endereco;
     private String email;
     private int cgm;
