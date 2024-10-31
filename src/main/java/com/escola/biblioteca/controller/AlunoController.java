@@ -106,15 +106,15 @@ import com.escola.biblioteca.repository.AlunoRepository;
     }
 
 
-    @GetMapping(value = "/{nome}")
-    public ResponseEntity<Long> buscarNome(@RequestBody String nome) {
-        Optional<Aluno> aluno = alunoRepository.findByNome(nome);
-        Aluno alunoObjeto = aluno.get();
-        System.out.println(alunoObjeto.toString());
-        return aluno.map(c -> ResponseEntity.ok(c.getId()))
-                    .orElse(ResponseEntity.notFound().build());
+    // @GetMapping(value = "/{nome}")
+    // public ResponseEntity<Long> buscarNome(@RequestBody String nome) {
+    //     Optional<Aluno> aluno = alunoRepository.findByNome(nome);
+    //     Aluno alunoObjeto = aluno.get();
+    //     System.out.println(alunoObjeto.toString());
+    //     return aluno.map(c -> ResponseEntity.ok(c.getId()))
+    //                 .orElse(ResponseEntity.notFound().build());
     
-    }
+    // }
 
 
 }
