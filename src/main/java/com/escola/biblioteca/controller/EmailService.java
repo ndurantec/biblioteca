@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.escola.biblioteca.modelo.EmailDetails;
 
+//https://www.youtube.com/watch?v=92cECAV6XgY
+
 @Service
 public class EmailService {
 
