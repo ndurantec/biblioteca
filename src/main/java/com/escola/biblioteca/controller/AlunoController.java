@@ -99,22 +99,30 @@ import com.escola.biblioteca.repository.AlunoRepository;
 
     @GetMapping(value = "/{cgm}")
     public void findByCgm(@PathVariable Long cgm){
-        //return alunoRepository.findByCgm(cgm);
-        //.map(registro-> ResponseEntity.ok().body(registro))
-                 //.orElse(ResponseEntity.notFound().build());
+        // return alunoRepository.findByCgm(cgm);
+        // .map(registro-> ResponseEntity.ok().body(registro))
+        //          .orElse(ResponseEntity.notFound().build());
 
     }
 
 
-    @GetMapping(value = "/{nome}")
-    public ResponseEntity<Long> buscarNome(@RequestBody String nome) {
-        Optional<Aluno> aluno = alunoRepository.findByNome(nome);
-        Aluno alunoObjeto = aluno.get();
-        System.out.println(alunoObjeto.toString());
-        return aluno.map(c -> ResponseEntity.ok(c.getId()))
-                    .orElse(ResponseEntity.notFound().build());
-    
+    @PostMapping(value = "/findByNome")
+    public String buscarPorNome(@RequestBody AlunoDTO alunoDTO) {
+        return alunoRepository.findByNome(alunoDTO.getNome());
     }
+
+
+
+    // @PostMapping(value = "findByNome")
+    // public ResponseEntity<Long> buscarNome(@RequestBody String nome) {
+    //     //Optional<Aluno> aluno = alunoRepository.findByNome(nome);
+    //     Aluno aluno = alunoRepository.findByNome(nome);
+    //     Aluno alunoObjeto = aluno.get();
+    //     System.out.println(alunoObjeto.toString());
+    //     return alunoRepository.findByNome(alunoDTO.getNome())
+    //                 .orElse(ResponseEntity.notFound().build());
+     
+    // }   
 
 
 }
