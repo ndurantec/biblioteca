@@ -63,11 +63,12 @@ public class EmprestimoController {
 
 
 
-        Aluno alunoDoBanco = alunoRepository.findByCgm(emprestimoDto.getCgmAluno() );
+        Aluno alunoDoBanco = alunoRepository.findByCgm(emprestimo.getCgmAluno() );
 
         if (alunoDoBanco != null) {
             System.out.println("================================================");
             System.out.println("================================================");
+            System.out.println("=====" + alunoDoBanco.getNome() );
             System.out.println("================================================");
             System.out.println("O email do aluno --> " + alunoDoBanco.getEmail());
             System.out.println("================================================");
@@ -77,8 +78,8 @@ public class EmprestimoController {
 
 
 
-        // EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro", null);
-        // emailService.sendMail(emailDetails);
+         EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro", null);
+         emailService.sendMail(emailDetails);
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
