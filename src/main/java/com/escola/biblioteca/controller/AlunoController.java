@@ -106,7 +106,6 @@ import com.escola.biblioteca.repository.AlunoRepository;
     }
 
 
-<<<<<<< HEAD
     // @GetMapping(value = "/{nome}")
     // public ResponseEntity<Long> buscarNome(@RequestBody String nome) {
     //     Optional<Aluno> aluno = alunoRepository.findByNome(nome);
@@ -116,12 +115,11 @@ import com.escola.biblioteca.repository.AlunoRepository;
     //                 .orElse(ResponseEntity.notFound().build());
     
     // }
-=======
-    @PostMapping(value = "/findByNome")
-    public String buscarPorNome(@RequestBody AlunoDTO alunoDTO) {
-        return alunoRepository.findByNome(alunoDTO.getNome());
+    
+     @PostMapping(value = "/findByNome")
+     public String buscarPorNome(@RequestBody AlunoDTO alunoDTO) {
+         return alunoRepository.findByNome(alunoDTO.getNome());
     }
->>>>>>> be9f7411ea355cf07119bdfeeb75ef40284fbcf9
 
 
 

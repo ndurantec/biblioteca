@@ -16,8 +16,8 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long>{
 
 
     //@Transactional(readOnly = true)  
-    @Query(value = "select * from aluno where nome = ?1", nativeQuery = true)
-    Aluno findByNome(String nome);
+    @Query(value = "select id from aluno where nome = ?1", nativeQuery = true)
+    String findByNome(String nome);
 
 
 
