@@ -2,6 +2,8 @@ package com.escola.biblioteca.modelo;
 
 import java.io.Serializable;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ public class Emprestimo implements Serializable{
     private Long id;
     private int cgmAluno;
     private String isbnLivro;
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
     private String dataEmprestimo;
     private String dataEntrega;
 
