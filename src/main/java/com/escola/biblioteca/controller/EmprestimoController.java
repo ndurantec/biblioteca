@@ -1,6 +1,8 @@
 package com.escola.biblioteca.controller;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +30,8 @@ import com.escola.biblioteca.repository.EmprestimoRepository;
 @CrossOrigin("*")
 @RequestMapping(value = "/emprestimo")
 public class EmprestimoController {
+
+    DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     @Autowired
     private EmailService emailService;
@@ -76,9 +80,10 @@ public class EmprestimoController {
             System.out.println("================================================");
         } 
 
+        //https://stackoverflow.com/questions/69071784/java-time-format-datetimeparseexception-text-13-11-2020-could-not-be-parsed-a
 
-
-         EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro", null);
+         EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro na data: " + 
+         LocalDate.parse(emprestimo.getDataEmprestimo(), fmt1) + "</br> A data de devolução é: " + LocalDate.parse( emprestimo.getDataEntrega() , fmt1), null);
          emailService.sendMail(emailDetails);
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
