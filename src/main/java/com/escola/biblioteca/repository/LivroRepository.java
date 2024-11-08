@@ -8,8 +8,8 @@ import com.escola.biblioteca.modelo.Livro;
 public interface LivroRepository extends JpaRepository<Livro, Long>{
 
      //@Transactional(readOnly = true)  
-     @Query(value = "select u.isbn from livro u where u.livro = ?1", nativeQuery = true)
-    Long findByIsbn(String livro);
+     @Query(value = "select * from livro u where u.livro = ?1", nativeQuery = true)
+    String findByIsbn(String livro);
     
 }
 

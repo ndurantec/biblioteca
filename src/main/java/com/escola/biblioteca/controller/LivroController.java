@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.escola.biblioteca.DTO.AlunoDTO;
 import com.escola.biblioteca.DTO.LivroDTO;
 import com.escola.biblioteca.modelo.Livro;
 import com.escola.biblioteca.repository.LivroRepository;
@@ -94,7 +95,12 @@ public class LivroController {
            return ResponseEntity.noContent().build();
        }
 
-       // @PostMapping("/findByIsbn")
+        @PostMapping(value = "/findByIsbn")
+    public String buscarPorIsbn(@RequestBody LivroDTO livroDTO) {
+        return livroRepository.findByIsbn(livroDTO.getIsbn());
+    }
+
+        //@PostMapping("/findByIsbn")
        // public ResponseEntity<Long> buscarIsbn(@RequestBody LivroDTO livroDTO) {
            // Optional<Livro> livro = livroRepository.findByIsbn(livroDTO.getIsbn());
             //Livro livroObjeto = livro.get();
