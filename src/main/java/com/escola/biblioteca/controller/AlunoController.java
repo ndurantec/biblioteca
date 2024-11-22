@@ -71,18 +71,18 @@ import com.escola.biblioteca.repository.AlunoRepository;
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody Aluno aluno){
+    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody AlunoDTO alunoDto){
         
-        Optional<Aluno> alunoBanco = alunoRepository.findById(null);
+        Optional<Aluno> alunoBanco = alunoRepository.findById(id);
 
         Aluno alunoModificado = alunoBanco.get();
 
-        alunoModificado.setNome(aluno.getNome());
-        alunoModificado.setEndereco(aluno.getEndereco());
-        alunoModificado.setEmail(aluno.getEmail());
-        alunoModificado.setCgm(aluno.getCgm());
-        alunoModificado.setTelefone(aluno.getTelefone());
-        alunoModificado.setDataNascimento(aluno.getDataNascimento());
+        alunoModificado.setNome(alunoDto.getNome());
+        alunoModificado.setEndereco(alunoDto.getEndereco());
+        alunoModificado.setEmail(alunoDto.getEmail());
+        alunoModificado.setCgm(alunoDto.getCgm());
+        alunoModificado.setTelefone(alunoDto.getTelefone());
+        alunoModificado.setDataNascimento(alunoDto.getDataNascimento());
 
         alunoRepository.save(alunoModificado);
 
