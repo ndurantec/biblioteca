@@ -42,6 +42,8 @@ public class EmprestimoController {
     @Autowired
     private AlunoRepository alunoRepository;
 
+    private DateTimeFormatter ofPattern;
+
     @GetMapping(value = "/imprimir")
     public String imprimir(){
         System.out.println("cheugouu");
@@ -82,9 +84,36 @@ public class EmprestimoController {
 
         //https://stackoverflow.com/questions/69071784/java-time-format-datetimeparseexception-text-13-11-2020-could-not-be-parsed-a
 
-         EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro na data: " + 
-         LocalDate.parse(emprestimo.getDataEmprestimo(), fmt1) + "</br> A data de devolução é: " + LocalDate.parse( emprestimo.getDataEntrega() , fmt1), null);
-         emailService.sendMail(emailDetails);
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        pattern.format(emprestimo.getDataEntrega());
+
+        //LocalDate dataFormatada = LocalDate.parse(emprestimo.getDataEntrega(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        System.out.println("===========================================");
+        System.out.println("===========================================");
+        System.out.println("===========================================");
+        System.out.println(pattern.format(emprestimo.getDataEntrega()));
+        System.out.println("===========================================");
+        System.out.println("===========================================");
+        System.out.println("===========================================");
+
+        //  EmailDetails emailDetails = new EmailDetails(alunoDoBanco.getEmail(), "Livro Emprestado", "Caro aluno, você emprestou um livro na data: " + 
+        //  LocalDate.parse(emprestimo.getDataEmprestimo(), fmt1) + "</br> A data de devolução é: " + LocalDate.parse( emprestimo.getDataEntrega() , fmt1), null);
+        //  emailService.sendMail(emailDetails);
+
+        EmailDetails emailDetails = new EmailDetails(
+            alunoDoBanco.getEmail(),
+            "Livro Emprestado",       
+            "Caro aluno, você emprestou um livro na data: " + pattern.format(emprestimo.getDataEmprestimo()) + "</br> A data de devolução é: " 
+                                                            + pattern.format(emprestimo.getDataEntrega()),
+            null
+
+        );
+        
+        emailService.sendMail(emailDetails);
+
+
 
       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

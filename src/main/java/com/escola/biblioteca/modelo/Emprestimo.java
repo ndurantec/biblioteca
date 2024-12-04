@@ -1,8 +1,7 @@
 package com.escola.biblioteca.modelo;
 
 import java.io.Serializable;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,24 +17,14 @@ public class Emprestimo implements Serializable{
     private int cgmAluno;
     private String isbnLivro;
     //@DateTimeFormat(pattern = "dd/MM/yyyy")
-    private String dataEmprestimo;
-    private String dataEntrega;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataEntrega;
 
     @Deprecated
     public Emprestimo() {
     }
 
-    public Emprestimo(Long id, int cgmAluno, String isbnLivro, String dataEmprestimo, String dataEntrega) {
-        this.id = id;
-        this.cgmAluno = cgmAluno;
-        this.isbnLivro = isbnLivro;
-        this.dataEmprestimo = dataEmprestimo;
-        this.dataEntrega = dataEntrega;
-    }
-
-    
-
-    public Emprestimo(int cgmAluno, String isbnLivro, String dataEmprestimo, String dataEntrega) {
+    public Emprestimo(int cgmAluno, String isbnLivro, LocalDate dataEmprestimo, LocalDate dataEntrega) {
         this.cgmAluno = cgmAluno;
         this.isbnLivro = isbnLivro;
         this.dataEmprestimo = dataEmprestimo;
@@ -66,22 +55,28 @@ public class Emprestimo implements Serializable{
         this.isbnLivro = isbnLivro;
     }
 
-    public String getDataEmprestimo() {
+    public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(String dataEmprestimo) {
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public String getDataEntrega() {
+    public LocalDate getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(String dataEntrega) {
+    public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
- /*
+
+    @Override
+    public String toString() {
+        return "Emprestimo [id=" + id + ", cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo="
+                + dataEmprestimo + ", dataEntrega=" + dataEntrega + "]";
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -126,61 +121,5 @@ public class Emprestimo implements Serializable{
         } else if (!dataEntrega.equals(other.dataEntrega))
             return false;
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Emprestimo [id=" + id + ", cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo="
-                + dataEmprestimo + ", dataEntrega=" + dataEntrega + "]";
-    }
-
-    */
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + cgmAluno;
-        result = prime * result + ((isbnLivro == null) ? 0 : isbnLivro.hashCode());
-        result = prime * result + ((dataEmprestimo == null) ? 0 : dataEmprestimo.hashCode());
-        result = prime * result + ((dataEntrega == null) ? 0 : dataEntrega.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Emprestimo other = (Emprestimo) obj;
-        if (cgmAluno != other.cgmAluno)
-            return false;
-        if (isbnLivro == null) {
-            if (other.isbnLivro != null)
-                return false;
-        } else if (!isbnLivro.equals(other.isbnLivro))
-            return false;
-        if (dataEmprestimo == null) {
-            if (other.dataEmprestimo != null)
-                return false;
-        } else if (!dataEmprestimo.equals(other.dataEmprestimo))
-            return false;
-        if (dataEntrega == null) {
-            if (other.dataEntrega != null)
-                return false;
-        } else if (!dataEntrega.equals(other.dataEntrega))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Emprestimo [cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo=" + dataEmprestimo
-                + ", dataEntrega=" + dataEntrega + "]";
-    }
-
-    
+    }    
 }

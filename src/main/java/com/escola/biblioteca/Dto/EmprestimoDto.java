@@ -1,6 +1,8 @@
 package com.escola.biblioteca.DTO;
 
 
+import java.time.LocalDate;
+
 import com.escola.biblioteca.modelo.Emprestimo;
 
 public class EmprestimoDTO {
@@ -8,19 +10,20 @@ public class EmprestimoDTO {
     private Long id;
     private int cgmAluno;
     private String isbnLivro;
-    private String dataEmprestimo;
-    private String dataEntrega;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataEntrega;
 
     public EmprestimoDTO() {
-    }
+    }    
 
-    public EmprestimoDTO(int cgmAluno, String isbnLivro, String dataEmprestimo, String dataEntrega) {
+    public EmprestimoDTO(Long id, int cgmAluno, String isbnLivro, LocalDate dataEmprestimo, LocalDate dataEntrega) {
+        this.id = id;
         this.cgmAluno = cgmAluno;
         this.isbnLivro = isbnLivro;
         this.dataEmprestimo = dataEmprestimo;
         this.dataEntrega = dataEntrega;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -40,27 +43,27 @@ public class EmprestimoDTO {
     public String getIsbnLivro() {
         return isbnLivro;
     }
-
+    
     public void setIsbnLivro(String isbnLivro) {
         this.isbnLivro = isbnLivro;
     }
-
-    public String getDataEmprestimo() {
+    
+    public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
-
-    public void setDataEmprestimo(String dataEmprestimo) {
+    
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
-
-    public String getDataEntrega() {
+    
+    public LocalDate getDataEntrega() {
         return dataEntrega;
     }
-
-    public void setDataEntrega(String dataEntrega) {
+    
+    public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
-
+        
     public Emprestimo novoEmprestimo(){
         System.out.println("**********************************");
         System.out.println("**********************************");
@@ -78,7 +81,4 @@ public class EmprestimoDTO {
         return "EmprestimoDTO [id=" + id + ", cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo="
                 + dataEmprestimo + ", dataEntrega=" + dataEntrega + "]";
     }
-
-    
-
 }
